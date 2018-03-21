@@ -1,23 +1,29 @@
 package com.practice.michael.demo.Controllers;
 
-import com.practice.michael.demo.DAOs.EmployeeDAO;
 import com.practice.michael.demo.DTOs.Employee;
-import com.practice.michael.demo.Exceptions.NoSuchEmployeeException;
+import com.practice.michael.demo.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    //cannot find inject import, will replace later
     @Autowired
-    EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
 
 
-    @GetMapping("/{firstName}")
-    public Employee findEmployeeByFirstName(@PathVariable("firstName") String firstName) {
-        return employeeDAO.getEmployeeByFirstName(firstName);
+    @GetMapping(path = "/{firstName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Employee> findEmployeeByFirstName(@PathVariable String firstName) {
+        Employee employee = employeeService.findOneEmployee(firstName);
+        if(employee==null){
+            ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.ok(employee);
+        }
+        return ResponseEntity.ok(null);
     }
 
 }
