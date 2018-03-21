@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface EmployeeDAO extends JpaRepository <Employee, Employee>{
+public interface EmployeeDAO extends JpaRepository <Employee, String>{
 }
