@@ -1,11 +1,14 @@
 package com.practice.michael.demo.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
 @Table(name="Employees")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee implements Serializable {
 
     @Column
@@ -43,5 +46,14 @@ public class Employee implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "Employee_ID='" + employeeID + '\'' +
+                ", FirstName=" + firstName +
+                ", LastName=" + lastName +
+                '}';
     }
 }
