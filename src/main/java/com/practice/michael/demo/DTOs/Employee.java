@@ -7,21 +7,21 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
-@Table(name="public.\"Employees\"")
+@Table(name="\"employees\"", schema="public")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee implements Serializable {
 
-    @Column(name = "\"Employee_ID\"")
+    @Column(name = "\"employee_id\"")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank
     private long employeeID;
 
-    @Column(name = "\"Firstname\"")
+    @Column(name = "\"firstname\"")
     @NotBlank
     private String firstName;
 
-    @Column(name = "\"Lastname\"")
+    @Column(name = "\"lastname\"")
     @NotBlank
     private String lastName;
 
