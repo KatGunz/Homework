@@ -1,7 +1,7 @@
 package com.practice.michael.demo;
 
 import com.practice.michael.demo.DTOs.Employee;
-import com.practice.michael.demo.Datasources.DBPostgresConfigAlternative;
+import com.practice.michael.demo.Configuration.DBPostgresConfigAlternative;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
