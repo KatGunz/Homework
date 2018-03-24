@@ -15,19 +15,6 @@ import org.springframework.web.client.RestTemplate;
 public class DemoApplication {
 	public static void main(String[] args){
 		SpringApplication.run(DemoApplication.class, args);
-		String firstNameTarget = "Burk";
-		demoFindEmployee(firstNameTarget);
 	}
-	private static void demoFindEmployee(String firstName){
-		RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8080/api/employees/" + firstName;
-		String lastName = null;
-		Employee employee = restTemplate.getForObject(url, Employee.class);
-		if(employee==null){
-			System.out.format("The employee with the first name %s cannot be found.", firstName);
-		}else {
-			lastName = employee.getLastName();
-			System.out.format("%s's last name is: %s", firstName, lastName);
-		}
-	}
+
 }

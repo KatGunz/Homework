@@ -16,12 +16,15 @@ public class EmployeeController {
 
 
     @GetMapping(path = "/{firstName}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Employee> findEmployeeByFirstName(@PathVariable String firstName) {
+    public ResponseEntity<String> findEmployeeByFirstName(@PathVariable String firstName) {
         Employee employee = employeeService.findOneEmployee(firstName);
         if(employee==null){
             ResponseEntity.noContent().build();
         }else{
-            return ResponseEntity.ok(employee);
+            //String is really a JSON, I should definitely
+            //be more explicit about this instead of just calling
+            //it a string
+            return ResponseEntity.ok(employee.toString());
         }
         return ResponseEntity.ok(null);
     }

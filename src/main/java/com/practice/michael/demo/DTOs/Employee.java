@@ -48,6 +48,24 @@ public class Employee implements Serializable {
         this.lastName = lastName;
     }
 
+    //write a builder for this if possible
+    @Override
+    public boolean equals(Object o){
+        //should I handle class cast exception here?
+        //takes in object instead of employee to override superclass method
+        Employee employee = (Employee) o;
+        if(this.employeeID == employee.getEmployeeID()
+                && this.lastName == employee.getLastName()
+                && this.firstName == employee.getFirstName())
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    //returns a JSON string of the object
+    //write a builder for this if possible
     @Override
     public String toString() {
         return "Employee{" +
