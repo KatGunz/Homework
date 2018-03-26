@@ -15,7 +15,9 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank
-    private long employeeID;
+    //renamed to id to abide by the restrictiveness
+    // of the extra repo generating framework
+    private Long id;
 
     @Column(name = "\"firstname\"")
     @NotBlank
@@ -25,17 +27,16 @@ public class Employee implements Serializable {
     @NotBlank
     private String lastName;
 
-    public long getEmployeeID() {
-        return employeeID;
+    public Long getId() {
+        return id;
     }
-    public void setEmployeeID(long employeeID) {
-        this.employeeID = employeeID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -43,18 +44,16 @@ public class Employee implements Serializable {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     //write a builder for this if possible
-    @Override
-    public boolean equals(Object o){
+
+    public boolean equals(Employee employee){
         //should I handle class cast exception here?
         //takes in object instead of employee to override superclass method
-        Employee employee = (Employee) o;
-        if(this.employeeID == employee.getEmployeeID()
+        if(this.id == employee.getId()
                 && this.lastName == employee.getLastName()
                 && this.firstName == employee.getFirstName())
         {
@@ -69,7 +68,7 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "Employee{" +
-                "Employee_ID='" + employeeID + '\'' +
+                "Employee_ID='" + id + '\'' +
                 ", FirstName=" + firstName +
                 ", LastName=" + lastName +
                 '}';

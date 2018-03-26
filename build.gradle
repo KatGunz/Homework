@@ -29,5 +29,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile ('org.postgresql:postgresql:42.2.2')
+	compile('com.mmnaseri.utils:spring-data-mock:1.1.4')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -1,6 +1,6 @@
 package com.practice.michael.demo.Services;
 
-import com.practice.michael.demo.DAOs.EmployeeDAO;
+import com.practice.michael.demo.DAOs.EmployeeDao;
 import com.practice.michael.demo.DTOs.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,12 @@ import javax.transaction.Transactional;
 public class EmployeeService {
 
     @Autowired
-    private EmployeeDAO employeeDAO;
+    private EmployeeDao employeeDao;
+
+
 
     public Employee findOneEmployee(String firstName){
-        return employeeDAO.getEmployeeByFirstName(firstName);
+        return employeeDao.getEmployeeByFirstName(firstName);
     }
 
 }
