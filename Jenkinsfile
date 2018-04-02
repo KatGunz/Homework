@@ -1,11 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Contruct Project') {
-      agent any
+    stage('Construct') {
       steps {
-        sh 'chmod +x gradlew'
-        sh './gradlew build -x test'
+        echo 'hello world'
       }
     }
   }
