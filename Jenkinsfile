@@ -6,7 +6,7 @@ pipeline {
       steps {
         git(url: 'https://github.com/KatGunz/Homework.git', branch: 'development', changelog: true)
         sh 'ls'
-        sh './gradlew build'
+        sh 'sudo gradle build'
       }
     }
   }
