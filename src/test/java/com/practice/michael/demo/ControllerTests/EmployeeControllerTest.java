@@ -6,6 +6,7 @@ import com.practice.michael.demo.DAOs.EmployeeDao;
 import com.practice.michael.demo.DTOs.Employee;
 import com.practice.michael.demo.Services.EmployeeService;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class EmployeeControllerTest {
         ReflectionTestUtils.setField(testEmployeeController, "employeeService", testEmployeeService);
 
     }
+    @Ignore
     @Test
     public void testEmployeeController()throws Exception{
         String testName = "Burk";
