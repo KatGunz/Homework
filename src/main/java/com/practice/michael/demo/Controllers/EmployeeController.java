@@ -18,30 +18,17 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-    private int page;
-    private int size;
-    private String firstname;
 
 
-    @GetMapping(path = "/{firstName}", params = { "page", "size" }, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> findEmployeeByFirstName(@RequestParam( "page" ) int page,
-                                                          @RequestParam( "size" ) int size,
-                                                          UriComponentsBuilder uriBuilder,
-                                                          HttpServletResponse response,
-                                                           @PathVariable String firstname) {
-        this.page = page;
-        this.size = size;
-        this.firstname = firstname;
-        List<Employee> employee = employeeService.findEmployeesByFirstName(firstname);
-        if(employee==null){
-            ResponseEntity.noContent().build();
+
+    @GetMapping(path = "/{firstName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> findEmployeeByFirstName(@PathVariable String firstName) {
+        List<Employee> employees = employeeService.findEmployeesByFirstName(firstName);
+        if(employees==null){
+            return ResponseEntity.noContent().build();
         }else{
-            //String is really a JSON, I should definitely
-            //be more explicit about this instead of just calling
-            //it a string
-            return ResponseEntity.ok(new Gson().toJson(employee));
+            return ResponseEntity.ok(new Gson().toJson(employees));
         }
-        return ResponseEntity.ok(null);
     }
 
 }
