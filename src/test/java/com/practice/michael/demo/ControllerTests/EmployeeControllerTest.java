@@ -53,7 +53,7 @@ public class EmployeeControllerTest {
 
 
     @Test
-    public void testEmployeeController()throws Exception{
+    public void testEmployeeControllerWithStatus200()throws Exception{
         String testName = "Burk";
         Employee employee = new Employee();
         employee.setId(1L);
@@ -77,5 +77,24 @@ public class EmployeeControllerTest {
 
         verifyNoMoreInteractions(testEmployeeService);
     }
+    @Test
+    public void testEmployeeControllerWithStatus400()throws Exception{
+        String testName = "Burk";
+        ArrayList<Employee> employees = null;
 
+        Mockito.when(testEmployeeService.findEmployeesByFirstName(testName)).thenReturn(employees);
+        MvcResult result =
+        mockMvc.perform(get("/api/employees/{firstName}", testName))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+        verify(testEmployeeService, times(1)).findEmployeesByFirstName(argumentCaptor.capture());
+
+        assertEquals(testName, argumentCaptor.getValue());
+        String responsePayload = result.getResponse().getContentAsString();
+        assertEquals("", responsePayload);
+
+        verifyNoMoreInteractions(testEmployeeService);
+    }
 }

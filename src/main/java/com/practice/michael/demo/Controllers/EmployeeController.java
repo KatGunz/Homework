@@ -25,7 +25,7 @@ public class EmployeeController {
     public ResponseEntity<String> findEmployeeByFirstName(@PathVariable String firstName) {
         List<Employee> employees = employeeService.findEmployeesByFirstName(firstName);
         if(employees==null){
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.badRequest().build();
         }else{
             return ResponseEntity.ok(new Gson().toJson(employees));
         }
