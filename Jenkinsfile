@@ -10,5 +10,10 @@ pipeline {
 ./gradlew clean build'''
       }
     }
+    stage('Sonar') {
+      steps {
+        waitForQualityGate true
+      }
+    }
   }
 }
