@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Construct') {
+    stage('Gradle') {
       steps {
         sh 'chmod +x gradlew '
         sh '''
