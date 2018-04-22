@@ -7,7 +7,7 @@ pipeline {
         sh '''
 
 
-./gradlew clean build -x test'''
+./gradlew clean build'''
       }
     }
   }
