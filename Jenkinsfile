@@ -14,6 +14,7 @@ pipeline {
         sonar_login = 'a99793310f532f6d993c4df41dfa564f73fe93d6'
       }
       steps {
+        sh 'chmod +x gradlew'
         sh './gradlew --info sonarqube -Dsonar.host.url=${sonar_host} -DSonar.login=${sonar_login}'
       }
     }
