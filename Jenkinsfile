@@ -14,13 +14,6 @@ pipeline {
               sh './gradlew --info sonarqube'
             }
         }
-     }
-    stage('Sonar') {
-      steps {
-        timeout(time: 1, unit: 'HOURS') {
-            waitForQualityGate true
-        }
-      }
     }
   }
 }
