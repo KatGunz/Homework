@@ -11,9 +11,9 @@ pipeline {
     stage('SonarQube analysis') {
         steps{
             withSonarQubeEnv('My SonarQube Server') {
-              // requires SonarQube Scanner for Gradle 2.1+
-              // It's important to add --info because of SONARJNKNS-281
-              sh './gradlew --info sonarqube'
+              sh './gradlew --info sonarqube \
+                 -Dsonar.host.url=http://66.44.120.253:9002 \
+                -Dsonar.login=a99793310f532f6d993c4df41dfa564f73fe93d6'
             }
         }
      }
