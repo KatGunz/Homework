@@ -12,12 +12,16 @@ pipeline {
       environment {
         sonar_url = 'http://66.44.120.253:9002'
         sonar_token = '49969e40ed2b489e7413d9a267d48a1f90894666'
-        git_token = 'b7887c3aae13b7a5d798734d7a1cff4ed063bac8'
+        groupId = 'com.practice.michael'
+        artifactId = 'demo'
+        sonar_projectKey = '${groupId}:${artifactId}'
       }
       steps {
         sh 'chmod +x gradlew'
-        sh '''./gradlew --info sonarqube -Dsonar.host.url=${sonar_url}
-  -Dsonar.login=${git_token}'''
+        sh './gradlew --info sonarqube 
+                -sonar.host.url=${sonar_url}
+                -sonar.login=${git_token}
+                -sonar.projectKey=${sonar_projectKey}'
       }
     }
     stage('Sonar Wait') {
