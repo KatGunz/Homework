@@ -18,7 +18,7 @@ pipeline {
       }
       steps {
         sh 'chmod +x gradlew'
-        sh './gradlew --info -Dsonar.host.url=${sonar_url} -Dsonar.login=${sonar_token} sonarqube'
+        sh './gradlew --info -Dsonar.host.url=${sonar_url} -Dsonar.login=${sonar_token} -Dsonar.projectKey=${sonar_projectKey} sonarqube'
       }
     }
     stage('Sonar Wait') {
