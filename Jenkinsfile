@@ -4,16 +4,9 @@ node {
         sh './gradlew clean build'
     }
     stage('Sonar Scan') {
-      environment {
-        sonar_url = 'http://66.44.120.253:9002'
-        sonar_token = '49969e40ed2b489e7413d9a267d48a1f90894666'
-        groupId = 'com.practice.michael'
-        artifactId = 'demo'
-        sonar_projectKey = '${groupId}:${artifactId}'
-      }
       sh 'chmod +x gradlew'
-      withSonarQubeEnv('My SonarQube Server') {
-           sh './gradlew --info -Dsonar.host.url=${sonar_url} -Dsonar.login=${sonar_token} -Dsonar.projectKey=${groupId}:${artifactId} sonarqube'
+      withSonarQubeEnv('My Sonarqube Server') {
+           sh './gradlew --info sonarqube'
       }
     }
     stage("Quality Gate"){
