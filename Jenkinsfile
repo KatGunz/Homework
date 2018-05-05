@@ -18,12 +18,17 @@ pipeline {
       }
       steps {
         sh 'chmod +x gradlew'
-        sh './gradlew --info -Dsonar.host.url=${sonar_url} -Dsonar.login=${sonar_token} -Dsonar.projectKey=${groupId}:${artifactId} sonarqube'
+        withSonarQubeEnv('My SonarQube Server') {
+            sh './gradlew --info -Dsonar.host.url=${sonar_url} -Dsonar.login=${sonar_token} -Dsonar.projectKey=${groupId}:${artifactId} sonarqube'
+        }
+
       }
     }
     stage('Sonar Wait') {
       steps {
-        waitForQualityGate()
+        timeout(time: 1, unit: 'HOURS') {
+            waitForQualityGate abortPipeline: true
+        }
       }
     }
   }
