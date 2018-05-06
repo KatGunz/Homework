@@ -1,5 +1,8 @@
 node {
-    stage('gradle') {
+    stage('Github Pull'){
+        git credentialsId: 'github', url: 'https://github.com/KatGunz/Homework'
+    }
+    stage('Gradle') {
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
