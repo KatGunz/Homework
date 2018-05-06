@@ -7,7 +7,7 @@ node {
     stage('Sonar Scan') {
       sh 'chmod +x gradlew'
       withSonarQubeEnv('My Sonarqube Server') {
-           sh "./gradlew --info -Dsonar.projectKey=${env.JOB_NAME} sonarqube"
+           sh "./gradlew --info -Dsonar.projectKey=${project.name}:${env.BRANCH_NAME} sonarqube"
       }
     }
     stage("Quality Gate"){
