@@ -1,7 +1,7 @@
 node {
     stage('gradle') {
         toolDir = env.JENKINS_HOME
-        gradleC = "." + toolDir + "/gradlew"
+        gradleC = toolDir + "/gradlew"
         sh "chmod +x ${gradleC}"
         sh './gradlew clean build'
     }
