@@ -1,13 +1,13 @@
 node {
     stage('gradle') {
-        echo 'current branch: ' + env.BRANCH_NAME
+        echo "current branch: ${env.BRANCH_NAME}"
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
     stage('Sonar Scan') {
       sh 'chmod +x gradlew'
       withSonarQubeEnv('My Sonarqube Server') {
-           sh './gradlew --info sonarqube'
+           sh './gradlew --info -sonarqube'
       }
     }
     stage("Quality Gate"){
