@@ -1,6 +1,5 @@
 node {
     stage('gradle') {
-        sh "echo " + env.GRADLE__HOME
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
