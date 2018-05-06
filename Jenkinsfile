@@ -1,6 +1,8 @@
 node {
     stage('gradle') {
-        sh 'git checkout ${env.BRANCH_NAME}'
+        if(env.BRANCH_NAME=='master'){
+            echo 'work damnit, work!'
+        }
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
