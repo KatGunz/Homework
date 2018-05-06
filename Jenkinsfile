@@ -1,5 +1,7 @@
 node {
     stage('gradle') {
+        sh "echo ${GRADLE__HOME}"
+        sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
     stage('Sonar Scan') {
