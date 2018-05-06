@@ -1,16 +1,10 @@
 node {
     stage('gradle') {
-        if(env.BRANCH_NAME=='master'){
-            echo 'work damnit, work!'
-        }
-        else{
-            echo 'correct'
-        }
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
     stage('Sonar Scan') {
-      sh 'git checkout ${env.BRANCH_NAME}'
+      echo 'current branch: ${env.BRANCH_NAME}'
       sh 'chmod +x gradlew'
       withSonarQubeEnv('My Sonarqube Server') {
            sh './gradlew --info sonarqube'
