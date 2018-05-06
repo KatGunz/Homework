@@ -2,9 +2,13 @@ node {
     stage('Github Pull'){
         git credentialsId: 'github', url: 'https://github.com/KatGunz/Homework'
     }
-    stage('Gradle') {
+    stage('Gradle Build') {
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
+    }
+    stage('Gradle Test') {
+        sh 'chmod +x gradlew'
+        sh './gradlew clean test'
     }
     stage('Sonar Scan') {
       sh 'chmod +x gradlew'
