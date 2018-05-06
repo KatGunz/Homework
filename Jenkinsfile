@@ -1,9 +1,7 @@
 node {
     stage('gradle') {
-        dir = env.JENKINS_HOME
-        if(dir==null){
-            exit
-        }
+        toolDir = env.JENKINS_HOME
+        echo toolDir
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
