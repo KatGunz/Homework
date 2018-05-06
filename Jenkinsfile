@@ -1,6 +1,5 @@
 node {
     stage('gradle') {
-        echo "current branch: ${env.BRANCH_NAME}"
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
