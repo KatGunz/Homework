@@ -1,8 +1,8 @@
 node {
     stage('gradle') {
         toolDir = env.JENKINS_HOME
-        echo toolDir
-        sh "chmod +x ${toolDir} gradlew"
+        gradleC = "." + toolDir + "/gradlew"
+        sh "chmod +x ${gradleC}"
         sh './gradlew clean build'
     }
     stage('Sonar Scan') {
