@@ -3,6 +3,9 @@ node {
         if(env.BRANCH_NAME=='master'){
             echo 'work damnit, work!'
         }
+        else{
+            echo 'correct'
+        }
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
     }
