@@ -23,7 +23,7 @@ node {
       }
     }
     stage("Publish"){
-        docker build -t homework:latest
+        docker build -t homework
         sh 'docker push katgunz/homework'
     }
 }
