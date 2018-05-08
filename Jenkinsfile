@@ -24,8 +24,9 @@ node {
     }
     stage("Publish"){
         if(env.BRANCH_NAME=="master"){
-            sh 'docker build -t homework-img:latest'
-            sh 'docker push katgunz/homework'
+            kubernetes.image().withName("homework").build().fromPath(".")
+            kubernetes.image().withName("homework").tag().inRepository("https://hub.docker.com/r/katgunz/homework/").withTag("latest")
+            kubernetes.image().withName("https://hub.docker.com/r/katgunz/homework/").push().withTag("latest").toRegistry()
         }
     }
 }
