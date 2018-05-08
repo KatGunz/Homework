@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
-@Table(name="\"employees\"", schema="public")
+@Table(name="\"employee\"", schema="public")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee implements Serializable {
 

@@ -18,7 +18,7 @@ public class EmployeeService {
 
 
        public List<Employee> findEmployeesByFirstName(String firstname){
-        return employeeDao.getAllEmployeesWithFirstName(firstname);
+        return employeeDao.findByFirstName(firstname);
     }
 
 }
