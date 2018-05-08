@@ -23,7 +23,9 @@ node {
       }
     }
     stage("Publish"){
-        sh 'docker build -t homework-img:latest'
-        sh 'docker push katgunz/homework'
+        if(env.BRANCH_NAME=="master"){
+            sh 'docker build -t homework-img:latest'
+            sh 'docker push katgunz/homework'
+        }
     }
 }
