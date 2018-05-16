@@ -50,9 +50,11 @@ public class Employee implements Serializable {
 
     //write a builder for this if possible
 
-    public boolean equals(Employee employee){
+    @Override
+    public boolean equals(Object o){
         //should I handle class cast exception here?
         //takes in object instead of employee to override superclass method
+        Employee employee = (Employee) o;
         if(this.id == employee.getId()
                 && this.lastName == employee.getLastName()
                 && this.firstName == employee.getFirstName())
